@@ -1,0 +1,145 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Container styling */
+.container {
+  max-width: 600px;
+  margin: 100px auto 0; /* Adjusted for fixed header */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title styling */
+.container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Required field indicator styling */
+.form-group label.required::after {
+  content: ' *';
+  color: red;
+}
+
+/* Input field styling */
+.form-group input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* 휴대폰 번호 필드 스타일링 */
+#phone {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Terms section styling */
+.terms-section {
+  margin-bottom: 20px;
+}
+
+.terms-section h2 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.terms-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow: auto;     /* 스크롤 바가 자동으로 나타나도록 설정 */
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+/* Checkbox styling */
+.terms-section label {
+  display: flex;
+  align-items: center;
+}
+
+.terms-section input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 80%;  /* 가로 크기를 80%로 조정 */
+  padding: 10px;
+  background-color: #26a69a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block; /* 중앙 정렬을 위해 display 속성을 block으로 변경 */
+  margin: 0 auto; /* 중앙 정렬을 위해 margin 속성을 auto로 설정 */
+  align-items: center;
+}
+
+button[type="submit"]:hover, .submit-button:hover {
+  background-color: #219085;
+}
+
+/* Link to login page styling */
+.login-link {
+  position: absolute;
+  left: 20%; /* 좌측에서 20% 위치 */
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* 가입하기 버튼 아래 여백 추가 */
+}
+
+.login-link a {
+  color: #26a69a;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Required message styling */
+.required-message {
+  text-align: center;
+  color: red;
+  margin-top: 20px;
+}
+
+/* Separator styling */
+.separator {
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
