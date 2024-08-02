@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/sign-up.css">
+  <link rel="icon" href="../../images/Amos-favicon-32x32.png">
+  <title>회원가입</title>
+  <style>
+    /* Header styles */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid #808080;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+      /* Amos 텍스트 스타일 */
+      .amos-text {
+            position: absolute;
+            top: 3px;
+            left: 20%;
+            background-color: whitesmoke;
+            width: 58px;
+            height: 40px;
+            color: #26a69a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .amos-text:hover {
+            background-color: #e0e0e0;
+        }
+      /* 로그인 버튼 스타일 */
+      .login-button {
+            position: absolute;
+            top: 14px;
+            left: 70%;
+            width: 120px;
+            height: 40px;
+            transform: translateX(-50%);
+            padding: 4.1px 16px;
+            background-color: whitesmoke;
+            color: #595f63;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #e0e0e0;
+        }
+      /* 회원가입 버튼 스타일 */
+      .Sign-up-button {
+            position: absolute;
+            top: 14px;
+            left: 75%;
+            width: 120px;
+            height: 40px;
+            transform: translateX(-50%);
+            padding: 4.1px 16px;
+            background-color: whitesmoke;
+            color: #595f63;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .Sign-up-button:hover {
+            background-color: #e0e0e0;
+        }
+      /* 커뮤니티 버튼 스타일 */
+      .list-button {
+            position: absolute; /* 절대 위치 */
+            top: 21px; /* 헤더보다 좀 더 아래에 위치 */
+            left: 26%; /* 화면 좌측에서 50% 지점에 위치 */
+            transform: translateX(-50%); /* 가로 방향으로만 중앙 정렬 */
+            width: auto;
+            height: auto;
+            padding: 10px 16px;
+            background-color: whitesmoke;
+            color: #595f63; /* 회색 글자색 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .list-button:hover {
+            background-color: #e0e0e0;
+        }
+  /* Responsive design */
+  @media only screen and (max-width: 1108px) {
+    header {
+      width: 100%;
+      padding: 0 10px;
+    }
+    .amos-text {
+      padding: 8px 12px;
+    }
+    .login-button,
+    .list-button {
+      padding: 6px 12px;
+    }
+  }
+
+    /* 비밀번호 표시 버튼 스타일 */
+    .mark {
+      width: 24px;
+      height: 24px;
+      left: 540px;
+      background-image: url("./images/close.png");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    /* 보안 수준, 인증 메시지 스타일 */
+    .password-strength {
+      margin-top: 5px;
+    }
+    .low {
+      color: red;
+    }
+    .medium {
+      color: darkkhaki;
+    }
+    .high {
+      color: lime;
+    }
+    .confirmation {
+      margin-top: 5px;
+      color: lime;
+    }
+
+    /* 스타일 조정 */
+    .form-group {
+      position: relative;
+    }
+
+    .mark {
+      position: absolute;
+      right: 10px;
+      top: 100%;
+      transform: translateY(-50%);
+    }
+
+    .password-strength,
+    .confirmation {
+      display: block;
+      margin-left: 5px;
+    }
+
+    /* Responsive design */
+    @media only screen and (max-width: 1108px) {
+      header {
+        width: 100%;
+        padding: 0 10px;
+      }
+      .amos-text {
+        padding: 8px 12px;
+      }
+      .login-button,
+      .list-button {
+        padding: 6px 12px;
+      }
+    }
+  </style>
+  <script>
+    function showAlertAndRedirect() {
+      const username = document.getElementById('username').value;
+      alert(`${username}님, Amos 커뮤니티에 가입해주셔서 진심으로 감사합니다! \n 확인 버튼을 누르시면 메인 페이지로 이동됩니다.`);
+      window.location.href = '../templates/main/main.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm_password');
+
+      const passwordStrengthMessage = document.createElement('div');
+      passwordStrengthMessage.classList.add('password-strength');
+      passwordInput.parentNode.appendChild(passwordStrengthMessage);
+
+      const confirmationMessage = document.createElement('div');
+      confirmationMessage.classList.add('confirmation');
+      confirmPasswordInput.parentNode.appendChild(confirmationMessage);
+
+      const usernameFeedbackMessage = document.createElement('div');
+      usernameInput.parentNode.appendChild(usernameFeedbackMessage);
+
+      usernameInput.addEventListener('input', () => {
+        if (usernameInput.value.length > 0) {
+          usernameInput.style.border = '2px solid green';
+          usernameFeedbackMessage.textContent = '✔ 멋진 이름이군요!';
+          usernameFeedbackMessage.style.color = 'lime';
+        } else {
+          usernameInput.style.border = '';
+          usernameFeedbackMessage.textContent = '';
+        }
+      });
+
+      passwordInput.addEventListener('input', () => {
+        const passwordLength = passwordInput.value.length;
+        if (passwordLength >= 0 && passwordLength <= 6) {
+          passwordStrengthMessage.textContent = '보안 수준 : 낮음';
+          passwordStrengthMessage.className = 'password-strength low';
+        } else if (passwordLength > 5 && passwordLength <= 9) {
+          passwordStrengthMessage.textContent = '보안 수준 : 보통';
+          passwordStrengthMessage.className = 'password-strength medium';
+        } else if (passwordLength > 9) {
+          passwordStrengthMessage.textContent = '보안 수준 : 높음';
+          passwordStrengthMessage.className = 'password-strength high';
+        } else {
+          passwordStrengthMessage.textContent = '';
+        }
+      });
+
+      confirmPasswordInput.addEventListener('input', () => {
+        if (confirmPasswordInput.value === passwordInput.value) {
+          confirmationMessage.textContent = '✔ 인증되었습니다!';
+          confirmationMessage.style.color = "lime";
+        } else {
+          confirmationMessage.textContent = '❌ 비밀번호가 일치하지 않습니다.';
+          confirmationMessage.style.color = "red";
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="amos-text" onclick="location.href='/templates/main/main.html'">Amos 아모스</div>
+    <button class="login-button" onclick="location.href='/login/login.html'">로그인</button>
+    <button class="Sign-up-button" onclick="location.href='/Sign-up/sign-up.html'">회원가입</button>
+    <button class="list-button" onclick="location.href='/templates/community/community.html'">커뮤니티</button>
+  </header>
+
+  <div class="container">
+    <h1>회원가입</h1>
+    <form onsubmit="showAlertAndRedirect(); return false;">
+      <div class="form-group">
+        <label for="username" class="required">사용자 이름:</label>
+        <input type="text" id="username" name="username" required>
+        <div id="username-feedback"></div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="required">이메일:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password" class="required">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+        <div class="mark"></div>
+        <div class="password-strength"></div>
+      </div>
+      <div class="form-group">
+        <label for="confirm_password" class="required">비밀번호 확인:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+        <div class="mark"></div>
+        <div class="confirmation"></div>
+      </div>
+      <div class="form-group">
+        <label for="phone" class="required">휴대폰 번호:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="terms-section">
+        <h2>서비스 이용약관</h2>
+        <div class="terms-content">
+          <p>여러분을 Amos 커뮤니티에 오신 것을 환영합니다! 저희 Amos 커뮤니티는 고객님들의 쾌적한 커뮤니티 이용을 위하여 이용 약관을 지정해두고 있습니다.
+             다음 약관에 따르지 않을 시 Amos 커뮤니티 이용에 제한 또는 불이익이 있을 수 있습니다. 이 약관은 Amos 커뮤니티 담당(조주하)가 운영하는 사이버커뮤니티에서 제공하는 서비스와 이를 이용하는 회원의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+              고객님께서는 아래 약관들을 지켜주셔야 Amos 커뮤니티의 규제는 없어지고 더 행복해질 것입니다. 아래 약관들을 잘 지켜주시고 만약 약관 위반이거나 커뮤니티 가이드를 위반한 고객이 있다면 공지 게시판에 알려주시기 바랍니다.
+               지켜야 할 약관은 다음과 같습니다. 첫 번째, 사이버 상에서 남을 모욕, 폭력, 갈굼 등의 행동과 저격, 비난, 부적절한 용어가 들어간 게시물을 올린 작성자는 Amos 커뮤니티 이용에 차질이 있을 수 있습니다.
+                두 번째, 위 Amos 사이트는 보안 인증 (www(월드와이드웹)이나 https(프로토콜))에 의해 보안이 되지 않고 있습니다. 따라서 위 사이트를 해킹, 조직 해킹, 조직 폭력(배)등 가담, 사이버 공격, 개인정보 공개 등의 행동은 하면 안됩니다.
+                 하지만 회원가입 절차의 개인정보들은 지켜지므로 안심하셔도 됩니다. 셋째, 이 Amos 커뮤니티의 소유권은 점적으로 담당/대표 인 '조주하'가 가지고 있습니다. 위 두 번째와 같이 해킹으로 인한 소유권이 넘어와도 다른 사람에게 양도 및 빌림은 어떠한 경우라도 절대로 안됩니다.
+                  위 사항이 적발 시 고소 진행 및 IP BAN으로 평생 Amos 커뮤니티에 입장하실 수 없습니다. 위 이용 약관들을 잘 숙지하시기 바라고 모두 쾌적한 커뮤니티를 만들어가도록 적극 협조 부탁드립니다. 감사합니다.🙇‍♂️</p>
+        </div>
+        <label>
+          <input type="checkbox" required> 서비스 이용약관에 동의합니다.
+        </label>
+      </div>
+      <div class="terms-section">
+        <h2>개인정보 수집동의</h2>
+        <div class="terms-content">
+          <p>개인정보보호법에 따라 Amos에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니
+             자세히 읽은 후 동의하여 주시기 바랍니다. 저희 Amos 커뮤니티는 간단한 사용자의 이름, 이메일, 비밀번호, 휴대폰 번호 같은 간단한 정보들을 수집하고 더 많은 개발에 사용 중입니다. 또한 이 정보들은 절대로 외부로 유출되지 않으므로 안심하셔도 됩니다.
+              저희 Amos 커뮤니티에서는 고객님들의 의견 반영 및 고객센터 이용 시 사용자의 정보로 더 나은 품질의 응답을 전해드릴 수 있습니다. 그리고 개인정보 수집 동의를 해주지 않을 시에는 Amos 커뮤니티의 사용이 제한될 수 있습니다.
+               따라서 고객님께서 Amos 커뮤니티 가입을 위해서는 개인정보 수집 동의를 해주셔야 합니다. 더 좋은 서비스를 드리겠습니다. 감사합니다.🙇‍♂️</p>
+        </div>
+        <label>
+          <input type="checkbox" required> 개인정보 수집 동의에 동의합니다.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-button">가입하기</button>
+    </form>
+    <p>이미 계정이 있으신가요? <a href="/login/login.html">로그인</a></p>
+  </div>
+
+  <div class="separator"></div>
+  <p class="required-message">*은 필수 입력 사항입니다.</p>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // 비밀번호 표시/숨김 기능 추가
+    const $passwordInput = $("#password");
+    const $confirmPasswordInput = $("#confirm_password");
+    const $passwordMark = $("#password").siblings(".mark");
+    const $confirmPasswordMark = $("#confirm_password").siblings(".mark");
+
+    $passwordMark.on("click", (e) => {
+      const isPassword = $passwordInput.attr("type") === 'password';
+      $passwordInput.attr("type", isPassword ? "text" : "password");
+      $(e.target).css("background-image", `url(${isPassword ? "./images/open.png" : "./images/close.png"})`);
+    });
+
+    $confirmPasswordMark.on("click", (e) => {
+      const isPassword = $confirmPasswordInput.attr("type") === 'password';
+      $confirmPasswordInput.attr("type", isPassword ? "text" : "password");
+      $(e.target).css("background-image", `url(${isPassword ? "./images/open.png" : "./images/close.png"})`);
+    });
+  </script>
+</body>
+</html>
